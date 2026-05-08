@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PulseX • Your Safety Companion</title>
+
+  <!-- FIXED PATHS -->
+  <link rel="stylesheet" href="css/css/animations.css">
+  <link rel="stylesheet" href="css/css/responsive.css">
+  <link rel="stylesheet" href="css/css/styles.css">
+</head>
+
+<body>
+
+  <div id="roleScreen">
+    <div class="role-header">
+      <h1>PulseX</h1>
+
+      <p class="safety-quote">
+        "Your safety is our priority"<br>
+        <span style="font-size:1rem;">
+          — Always Protected, Always Connected
+        </span>
+      </p>
+    </div>
+
+    <div class="role-container">
+
+      <h2 style="
+        margin-bottom:25px;
+        text-align:center;
+        font-size:1.6rem;
+        color:white;
+      ">
+        Choose Safety Mode
+      </h2>
+
+      <button class="roleBtn child" onclick="setMode('child')">
+        👧 Child Safety
+      </button>
+
+      <button class="roleBtn women" onclick="setMode('women')">
+        👩 Women Safety
+      </button>
+
+      <button class="roleBtn accident" onclick="setMode('accident')">
+        🚑 Accident Emergency
+      </button>
+
+    </div>
+  </div>
+
+  <div id="app">
+
+    <div class="mode-title-container">
+      <h1 id="modeTitle" class="mode-title"></h1>
+    </div>
+
+    <div class="card">
+
+      <div class="section-title">
+        🎤 Voice Commander
+        <span id="voiceStatus">🔵 Idle</span>
+      </div>
+
+      <div class="voice-feedback" id="voiceFeedback">
+        💡 Click the microphone button and say a command
+      </div>
+
+      <button class="btn-voice" id="voiceBtn"
+        onclick="startVoiceRecognition()">
+        🎙️ Activate Voice Command
+      </button>
+
+      <div id="voiceCommandResult"
+        class="voice-command"
+        style="display:none;">
+      </div>
+
+      <div class="permission-box" id="permissionHint">
+        ℹ️ Allow microphone permission
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <h2 class="section-title">
+        👥 Emergency Contacts
+      </h2>
+
+      <div id="contactsList"></div>
+
+      <div id="addContactPanel"
+        style="display:none; margin-top:15px;">
+
+        <input type="text"
+          id="newContactName"
+          placeholder="Contact Name">
+
+        <input type="tel"
+          id="newContactNumber"
+          placeholder="Phone Number">
+
+        <button onclick="addNewContact()" style="background:#006400;">
+          Save Contact
+        </button>
+
+        <button onclick="hideAddContactForm()" style="background:#ff3366;">
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div id="emergencyButtons"></div>
+
+      <button class="btn-sos" onclick="callSOS()">
+        🚨 SOS EMERGENCY
+      </button>
+
+    </div>
+
+    <div id="sosScreen">
+
+      <h2 class="section-title">SOS Emergency</h2>
+
+      <div class="sos-text">
+        🚨 EMERGENCY ACTIVATED 🚨
+      </div>
+
+      <p>Calling Emergency Services...</p>
+
+      <button onclick="cancelSOS()"
+        style="background:white;color:#ff416c;margin-top:40px;width:200px;border-radius:30px;font-weight:700;">
+        Cancel
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h2 class="section-title">
+        🚔 Nearby Police
+      </h2>
+
+      <button class="btn-child" onclick="findPolice()">
+        Find Police Stations
+      </button>
+
+      <div id="policeList"></div>
+
+    </div>
+
+    <div class="card">
+
+      <h2 class="section-title">
+        📍 Share Live Location
+      </h2>
+
+      <button class="btn-share" onclick="shareLocation()">
+        Send Live Location Alert
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h2 class="section-title">
+        🌐 Universal SOS
+      </h2>
+
+      <button class="btn-universal" onclick="shareUniversalSOS()">
+        Share SOS Link
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- FIX: safe loading order -->
+  <script src="js/app.js"></script>
+  <script src="js/contacts.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/mode.js"></script>
+  <script src="js/police.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/sos.js"></script>
+
+  <!-- SAFE INIT (IMPORTANT FIX) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      console.log("PulseX UI Loaded");
+    });
+  </script>
+
+</body>
+</html>
