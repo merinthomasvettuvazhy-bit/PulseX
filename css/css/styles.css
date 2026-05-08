@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --child-blue: #00b4ff;
+  --women-pink: #ff4d94;
+  --accident-red: #ff3366;
+  --universal-blue: #00aaff;
+  --share-green: #00c853;
+  --sos-red: #ff0022;
+  --dark: #0a0a0a;
+  --card: #111111;
+}
+
+/* =========================
+   MODE TITLE PREMIUM
+========================= */
+
+.mode-title-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:30px 0;
+}
+
+.mode-title{
+  position:relative;
+
+  font-size:2.4rem;
+  font-weight:900;
+  text-align:center;
+
+  padding:18px 34px;
+
+  border-radius:24px;
+
+  background:linear-gradient(
+    135deg,
+    rgba(0,229,255,0.12),
+    rgba(255,77,148,0.12),
+    rgba(0,255,170,0.12)
+  );
+
+  backdrop-filter:blur(14px);
+
+  color:white;
+
+  letter-spacing:1px;
+
+  overflow:hidden;
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 0 20px rgba(0,229,255,0.18),
+    0 0 40px rgba(255,77,148,0.12);
+
+  animation:titleGlow 4s ease infinite;
+}
+
+/* animated glow line */
+
+.mode-title::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:-120%;
+
+  width:80%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+
+  transform:skewX(-25deg);
+
+  animation:shine 4s linear infinite;
+}
+
+/* bottom neon line */
+
+.mode-title::after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  bottom:8px;
+
+  transform:translateX(-50%);
+
+  width:65%;
+  height:4px;
+
+  border-radius:20px;
+
+  background:linear-gradient(
+    90deg,
+    #00e5ff,
+    #ff4d94,
+    #00ffae
+  );
+
+  box-shadow:
+    0 0 10px #00e5ff,
+    0 0 20px #ff4d94,
+    0 0 30px #00ffae;
+}
+
+/* glow animation */
+
+@keyframes titleGlow{
+
+  0%{
+    box-shadow:
+      0 0 15px rgba(0,229,255,0.18),
+      0 0 35px rgba(255,77,148,0.10);
+  }
+
+  50%{
+    box-shadow:
+      0 0 30px rgba(0,229,255,0.28),
+      0 0 55px rgba(255,77,148,0.18);
+  }
+
+  100%{
+    box-shadow:
+      0 0 15px rgba(0,229,255,0.18),
+      0 0 35px rgba(255,77,148,0.10);
+  }
+
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #1a0033);
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Role Screen */
+#roleScreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 10, 10, 0.98);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.role-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.role-header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ff3366, #00f5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.safety-quote {
+  font-size: 1.15rem;
+  color: #ddd;
+  font-style: italic;
+  max-width: 320px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.role-container {
+  width: 100%;
+  max-width: 380px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.roleBtn {
+  padding: 18px 20px;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.roleBtn:hover { transform: translateY(-5px); }
+
+.roleBtn.child,
+.btn-child {
+  background: linear-gradient(135deg, var(--child-blue), #0077cc);
+}
+
+.roleBtn.women,
+.btn-women {
+  background: linear-gradient(135deg, var(--women-pink), #cc0066);
+}
+
+.roleBtn.accident,
+.btn-accident {
+  background: linear-gradient(135deg, var(--accident-red), #cc0022);
+}
+
+/* App */
+#app {
+  display: none;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 51, 102, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+}
+
+/* Buttons */
+.btn-universal {
+  background: linear-gradient(135deg, var(--universal-blue), #0077cc);
+}
+
+.btn-share {
+  background: linear-gradient(135deg, var(--share-green), #00aa44);
+}
+
+.btn-custom {
+  background: linear-gradient(135deg, #ff6ec4, #7873f5, #4ADEDE);
+  background-size: 300% 300%;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-weight: 600;
+  padding: 16px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(120, 115, 245, 0.3);
+  animation: gradientMove 6s ease infinite;
+}
+
+/* Hover effect */
+.btn-custom:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(255, 110, 196, 0.4);
+}
+
+
+.btn-voice {
+  background: linear-gradient(135deg, #00e5ff, #00c853);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 16px;
+  padding: 16px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 229, 255, 0.35);
+}
+
+/* Hover Effect */
+.btn-voice:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 200, 83, 0.4);
+}
+
+.btn-voice.listening {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  animation: voicePulse 1s infinite;
+}
+
+
+/* SOS */
+ .btn-sos {
+      background: linear-gradient(135deg, var(--sos-red), #aa0011);
+      color: white;
+      font-size: 1.35rem;
+      padding: 22px;
+      margin-top: 15px;
+      box-shadow: 0 0 30px rgba(255, 0, 34, 0.7);
+    }
+
+.btn-sos:active {
+  transform: scale(0.95);
+}
+
+#sosScreen {
+  z-index: 9999;
+}
+
+#sosScreen button {
+  z-index: 10000;
+  position: relative;
+  pointer-events: auto;
+}
+
+/* Voice UI */
+.voice-feedback {
+  background: rgba(255,255,255,0.05);
+  border-radius: 40px;
+  padding: 12px 18px;
+  margin-bottom: 15px;
+  border-left: 4px solid #a8c0ff;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.voice-command {
+  background: rgba(168, 192, 255, 0.2);
+  border-radius: 16px;
+  padding: 10px;
+  font-size: 0.85rem;
+  color: #ddd;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Contacts */
+.custom-contact-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #eee;
+}
+
+.custom-contact-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--women-pink);
+}
+
+.custom-contact-number {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+#newContactName,
+#newContactNumber {
+  width: 100%;
+  height: 55px;
+  padding: 0 15px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  box-sizing: border-box;
+
+  background: #ffffff !important;  /* white background */
+  color: #000000 !important;       /* black text (for readability) */
+}
+
+#newContactName::placeholder,
+#newContactNumber::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #000 !important;
+  box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/* Police */
+.police-item {
+  background: #1a1a1a;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border-left: 4px solid var(--child-blue);
+  color: #ddd;
+}
+
+/* SOS Screen */
+#sosScreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(45deg, #ff0033, #990022);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  z-index: 9999;
+  animation: pulse 1.1s infinite;
+}
+
+
+.sos-text {
+  font-size: 2.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
